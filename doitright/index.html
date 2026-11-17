@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Berk OGUZ – Do It Right</title>
+<meta name="description" content="Berk OGUZ – Do It Right. Spotify, Apple Music, YouTube ve diğer platformlarda dinle.">
+<meta property="og:title" content="Berk OGUZ – Do It Right">
+<meta property="og:description" content="Şimdi tüm platformlarda.">
+<meta property="og:image" content="https://berkogz.github.io/doitright/cover.jpg">
+<meta name="facebook-domain-verification" content="m4lg2ughzitln669zb5hnjn1fa6lbl" />
+<style>
+  :root { --red:#e8242a; --bg:#0d0b0b; --card:rgba(20,16,16,.78); --line:rgba(255,255,255,.1); --text:#fff; --muted:#bdb5b3; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:var(--bg); color:var(--text);
+         font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .bg { position:fixed; inset:-40px; background:url(cover.jpg) center/cover; filter:blur(40px) brightness(.45); z-index:-1; }
+  main { max-width:440px; margin:0 auto; padding:32px 16px 120px; }
+  .cover { display:block; width:100%; max-width:300px; height:auto; aspect-ratio:1; margin:0 auto 20px; border-radius:12px;
+           box-shadow:0 20px 50px rgba(0,0,0,.6); }
+  h1 { margin:0; text-align:center; font-size:30px; letter-spacing:.5px; }
+  .artist { margin:4px 0 24px; text-align:center; color:var(--muted); font-size:17px; font-weight:600; }
+  ul { list-style:none; margin:0; padding:0; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  li + li { border-top:1px solid var(--line); }
+  a.p { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 18px;
+        color:var(--text); text-decoration:none; font-size:17px; font-weight:600; min-height:60px; }
+  a.p:hover, a.p:focus-visible { background:rgba(255,255,255,.06); outline:none; }
+  a.p span { padding:8px 16px; border:1px solid rgba(255,255,255,.35); border-radius:30px; font-size:14px; font-weight:700; }
+  a.p.main span { background:var(--red); border-color:var(--red); }
+  #consent { position:fixed; left:12px; right:12px; bottom:12px; max-width:440px; margin:0 auto; padding:14px 16px;
+             background:#1b1716; border:1px solid var(--line); border-radius:12px; font-size:13px; line-height:1.45; color:var(--muted); }
+  #consent[hidden] { display:none; }
+  #consent .row { display:flex; gap:8px; margin-top:10px; }
+  #consent button { flex:1; padding:10px; border-radius:8px; font:inherit; font-weight:700; cursor:pointer; }
+  #yes { background:var(--red); border:0; color:#fff; }
+  #no { background:transparent; border:1px solid var(--line); color:var(--text); }
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main>
+  <img class="cover" src="cover.jpg" alt="Do It Right kapak görseli" width="480" height="480">
+  <h1>Do It Right</h1>
+  <p class="artist">Berk OGUZ</p>
+  <ul>
+    <li><a class="p main" data-ev="SpotifyClick" href="https://open.spotify.com/track/3fapesGpJPwrkVUPoAW5XJ">Spotify <span>Dinle</span></a></li>
+    <li><a class="p" data-ev="AppleMusicClick" href="https://music.apple.com/tr/album/do-it-right/6819514504?i=6819514507">Apple Music <span>Dinle</span></a></li>
+    <li><a class="p" data-ev="YouTubeMusicClick" href="https://music.youtube.com/watch?v=dc248QKr-10">YouTube Music <span>Dinle</span></a></li>
+    <li><a class="p" data-ev="YouTubeClick" href="https://www.youtube.com/watch?v=VkxTqbYxZoE">YouTube <span>Dinle</span></a></li>
+    <li><a class="p" data-ev="SoundCloudClick" href="https://soundcloud.com/sslmusic/do-it-right-1">SoundCloud <span>Dinle</span></a></li>
+    <li><a class="p" data-ev="BeatportClick" href="https://www.beatport.com/release/do-it-right/7584879">Beatport <span>Satın al</span></a></li>
+  </ul>
+</main>
+
+<div id="consent" role="dialog" aria-label="Çerez izni" hidden>
+  Bu sayfa, reklamlarımızın işe yarayıp yaramadığını ölçmek için Meta Pixel çerezleri kullanır. İzin verirsen hangi platforma tıkladığın Meta'ya iletilir.
+  <div class="row"><button id="no" type="button">Reddet</button><button id="yes" type="button">İzin ver</button></div>
+</div>
+
+<script>
+  const PIXEL_ID = '1323975828672419'; // reklam hesabının pixel'i; boşken olaylar sadece konsola yazılır
+  const KEY = 'pixel-consent';
+  let pixelOn = false;
+
+  function store(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+
+  function startPixel() {
+    if (pixelOn) return;
+    pixelOn = true;
+    if (!PIXEL_ID) { console.log('[pixel test] PageView'); return; }
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  const box = document.getElementById('consent');
+  const choice = stored();
+  if (choice === 'yes') startPixel();
+  else if (choice !== 'no') box.hidden = false;
+  document.getElementById('yes').onclick = () => { store('yes'); box.hidden = true; startPixel(); };
+  document.getElementById('no').onclick = () => { store('no'); box.hidden = true; };
+
+  document.querySelectorAll('a[data-ev]').forEach(a => a.addEventListener('click', e => {
+    if (!pixelOn) return; // izin yoksa link normal açılır
+    e.preventDefault();
+    if (PIXEL_ID) fbq('trackCustom', a.dataset.ev); else console.log('[pixel test] ' + a.dataset.ev);
+    setTimeout(() => { location.href = a.href; }, 300); // olayın gönderilmesine zaman tanır
+  }));
+</script>
+</body>
+</html>
